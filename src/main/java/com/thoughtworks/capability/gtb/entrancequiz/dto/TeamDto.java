@@ -13,5 +13,5 @@ import java.util.List;
 @NoArgsConstructor
 public class TeamDto {
     private String name;
-    private List<TeamMemberDto> studentDtoList;
+    private List<MemberDto> memberDtoList;
 }

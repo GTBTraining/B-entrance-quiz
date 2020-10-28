@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class TeamMemberDto {
+public class MemberDto {
     private int id;
     private String name;
 }
