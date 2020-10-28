@@ -15,7 +15,9 @@ public class TeamService {
 
     public List<TeamDto> getTeam() {
         List<MemberDto> allStudents = MemberRepository.getAllMembers();
-        Collections.shuffle(allStudents);
+        List<MemberDto> tempList = new ArrayList<>();
+        tempList.addAll(allStudents);
+        Collections.shuffle(tempList);
 
         List<TeamDto> AllTeams = new ArrayList<>();
         for (int i = 0; i < 6; i++) {
@@ -23,14 +25,14 @@ public class TeamService {
             AllTeams.add(new TeamDto(String.format("%d 组", i+1), TeamMembers));
         }
 
-        for (int i = 0; i < allStudents.size(); i++) {
+        for (int i = 0; i < tempList.size(); i++) {
             if (i < 6) {
                 List<MemberDto> TeamMembers = AllTeams.get(i).getMemberDtoList();
-                TeamMembers.add(allStudents.get(i));
+                TeamMembers.add(tempList.get(i));
                 AllTeams.get(i).setMemberDtoList(TeamMembers);
             } else {
                 List<MemberDto> TeamMembers = AllTeams.get(i % 6).getMemberDtoList();
-                TeamMembers.add(allStudents.get(i));
+                TeamMembers.add(tempList.get(i));
                 AllTeams.get(i % 6).setMemberDtoList(TeamMembers);
             }
         }
