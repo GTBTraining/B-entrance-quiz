@@ -13,10 +13,12 @@ public class TeamController {
 
     private final TeamService teamService;
 
+    //TODO GTB-知识点: - @Autowired 是多余的了
     @Autowired
     public  TeamController(TeamService teamService){
         this.teamService=teamService;
     }
+
     @PostMapping
     @ResponseBody
     List<TeamMember> formteam (@RequestBody List<TeamMember> teamMembers) {
